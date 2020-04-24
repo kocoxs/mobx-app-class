@@ -3,10 +3,30 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Invoice from './models/invoice'
+import store from './models/todos'
+
+const myStore = store.create({
+  users: {},
+  todos: {
+      "1": {
+          name: "Eat a cake",
+          done: false
+      },
+      "2": {
+        name: "Eat a pancake",
+          done: false
+      }
+  }
+})
+const invoice = Invoice.create({
+  currency:"USD",
+  is_paid: false
+})
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App store={myStore}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
